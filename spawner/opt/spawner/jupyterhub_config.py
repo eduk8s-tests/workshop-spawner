@@ -280,7 +280,7 @@ c.JupyterHub.authenticator_class = 'tmpauthenticator.TmpAuthenticator'
 
 c.JupyterHub.spawner_class = 'kubespawner.KubeSpawner'
 
-c.JupyterHub.logo_file = '/opt/spawner/images/HomeroomIcon.png'
+c.JupyterHub.logo_file = '/opt/spawner/images/eduk8s.png'
 
 c.Spawner.environment = dict()
 
