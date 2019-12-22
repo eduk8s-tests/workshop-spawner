@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: spawner-environ
 data:
-  WORKSHOP_IMAGE: quay.io/eduk8s/workshop-dashboard:latest
+  WORKSHOP_IMAGE: quay.io/eduk8s/workshop-dashboard:develop
