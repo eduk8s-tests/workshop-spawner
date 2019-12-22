@@ -230,6 +230,11 @@ def modify_pod_hook(spawner, pod):
 
     yield wait_on_service_account(user_account_name)
 
+    # Create special resources required by the embedded console.
+
+    yield create_console_resources(spawner, pod, project_name, project_uid,
+            user_account_name, short_name)
+
     # Create any extra resources in the project required for a workshop.
 
     yield create_extra_resources(spawner, pod, project_name, project_uid,

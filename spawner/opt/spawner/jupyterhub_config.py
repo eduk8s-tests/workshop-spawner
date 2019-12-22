@@ -557,6 +557,22 @@ role_binding_template = string.Template("""
 }
 """)
 
+secret_template = string.Template("""
+{
+    "kind": "Secret",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "${name}",
+        "labels": {
+            "app": "${application_name}",
+            "spawner": "${configuration}",
+            "class": "session",
+            "user": "${username}"
+        }
+    }
+}
+""")
+
 resource_budget_mapping = {
     "small": {
         "resource-limits" : {
@@ -1589,6 +1605,32 @@ def setup_project_namespace(spawner, pod, project_name, role, budget):
     # Return the project UID for later use as owner UID if needed.
 
     return project_uid
+
+@gen.coroutine
+def create_console_resources(spawner, pod, project_name, owner_uid,
+        user_account_name, short_name):
+
+    try:
+        text = secret_template.safe_substitute(
+                configuration=configuration_type, namespace=namespace,
+                name='kubernetes-dashboard-csrf',
+                application_name=application_name, username=short_name)
+        body = json.loads(text)
+
+        secret_resource.create(namespace=namespace, body=body)
+
+    except ApiException as e:
+        if e.status != 409:
+            print('ERROR: Error creating console CSRF secret. %s' % e)
+            raise
+
+        else:
+            print('WARNING: Console CSRF secret already exists.')
+            break
+
+    except Exception as e:
+        print('ERROR: Error creating console CSRF secret. %s' % e)
+        raise
 
 extra_resources = {}
 extra_resources_loader = None
