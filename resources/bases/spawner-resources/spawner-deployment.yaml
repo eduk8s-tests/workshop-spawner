@@ -30,7 +30,7 @@ spec:
           requests:
             memory: 768Mi
         volumeMounts:
-        - mountPath: /opt/app-root/configs
+        - mountPath: /var/run/spawner/configs
           name: configs
       volumes:
       - name: configs
