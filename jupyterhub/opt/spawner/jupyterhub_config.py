@@ -335,14 +335,8 @@ c.Spawner.mem_limit = convert_size_to_bytes(
 # so that during development, changes to the terminal image will always
 # be picked up. Someone developing a new image need only update the
 # 'latest' tag on the image using 'oc tag'. 
-#
-# Check for TERMINAL_IMAGE is for backward compatibility. Should use
-# WORKSHOP_IMAGE now.
 
 workshop_image = os.environ.get('WORKSHOP_IMAGE')
-
-if not workshop_image:
-    workshop_image = os.environ.get('TERMINAL_IMAGE')
 
 if not workshop_image:
     c.KubeSpawner.image_pull_policy = 'Always'
