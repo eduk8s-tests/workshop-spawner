@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Setup environment.
+
+. /opt/eduk8s/etc/environment
+
+for script in /opt/eduk8s/etc/setup.d/*.sh; do
+    if [ -x "$script" ]; then
+        $script
+    fi
+done
+
+# Run supervisord.
+
+exec supervisord --nodaemon
