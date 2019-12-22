@@ -1459,6 +1459,7 @@ def setup_project_namespace(spawner, pod, project_name, role, budget):
     # can perform additional actions declared through additional policy
     # rules for a specific workshop session.
 
+    """
     try:
         text = role_binding_template.safe_substitute(
                 configuration=configuration_type, namespace=namespace,
@@ -1477,6 +1478,7 @@ def setup_project_namespace(spawner, pod, project_name, role, budget):
     except Exception as e:
         print('ERROR: Error creating rolebinding for extras. %s' % e)
         raise
+    """
 
     # Determine what project namespace resources need to be used.
 
@@ -1591,6 +1593,7 @@ def setup_project_namespace(spawner, pod, project_name, role, budget):
 extra_resources = {}
 extra_resources_loader = None
 
+"""
 if os.path.exists('/opt/app-root/resources/extra_resources.yaml'):
     with open('/opt/app-root/resources/extra_resources.yaml') as fp:
         extra_resources = fp.read().strip()
@@ -1600,6 +1603,7 @@ if os.path.exists('/opt/app-root/resources/extra_resources.json'):
     with open('/opt/app-root/resources/extra_resources.json') as fp:
         extra_resources = fp.read().strip()
         extra_resources_loader = json.loads
+"""
 
 def _namespaced_resources():
     api_groups = api_client.resources.parse_api_groups()
