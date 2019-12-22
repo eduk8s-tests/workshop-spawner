@@ -262,7 +262,7 @@ c.KubeSpawner.extra_annotations = {
     "alpha.image.policy.openshift.io/resolve-names": "*"
 }
 
-c.KubeSpawner.cmd = ['start-singleuser.sh']
+c.KubeSpawner.cmd = ['start-container']
 
 c.KubeSpawner.pod_name_template = '%s-user-{username}' % application_name
 
