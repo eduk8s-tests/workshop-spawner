@@ -1,30 +1,23 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
-- ../../bases/spawner-resources
-
 commonLabels:
   app: learning-portal
   spawner: learning-portal
+  class: spawner
 
 resources:
+- spawner-service-account.yaml
+- spawner-environ-config-map.yaml
+- spawner-configs-config-map.yaml
+- spawner-deployment.yaml
+- spawner-service.yaml
+- spawner-ingress.yaml
 - spawner-basic-cluster-role-binding.yaml
 - spawner-extra-cluster-role.yaml
 - spawner-extra-cluster-role-binding.yaml
 - spawner-rules-cluster-role.yaml
 - spawner-rules-cluster-role-binding.yaml
-- session-rules-cluster-role.yaml
-- session-rules-cluster-role-binding.yaml
-- session-resources-config-map.yaml
-
-patchesJson6902:
-- path: spawner-deployment-patch.yaml
-  target:
-    group: apps
-    version: v1
-    kind: Deployment
-    name: spawner
 
 configMapGenerator:
 - name: spawner-environ
@@ -33,3 +26,8 @@ configMapGenerator:
   - CONFIGURATION_TYPE="learning-portal"
   - SERVER_LIMIT="8"
   - RESOURCE_BUDGET="default"
+
+images:
+- name: workshop-spawner
+  newName: quay.io/eduk8s/workshop-spawner
+  newTag: develop

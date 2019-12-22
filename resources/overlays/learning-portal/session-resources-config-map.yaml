@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: session-resources
-data:
-  extra_resources.yaml: ""
