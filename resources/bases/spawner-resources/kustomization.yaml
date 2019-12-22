@@ -17,4 +17,4 @@ resources:
 images:
 - name: workshop-spawner
   newName: quay.io/eduk8s/workshop-spawner
-  newTag: latest
+  newTag: develop
