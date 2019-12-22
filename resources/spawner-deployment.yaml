@@ -17,7 +17,7 @@ spec:
       serviceAccountName: spawner
       containers:
       - name: spawner
-        image: quay.io/eduk8s/workshop-spawner:develop
+        image: workshop-spawner
         envFrom:
         - configMapRef:
             name: spawner-environ
