@@ -3,8 +3,3 @@ kind: Kustomization
 
 bases:
 - resources
-
-images:
-- name: workshop-spawner
-  newName: quay.io/eduk8s/workshop-spawner
-  newTag: develop
