@@ -9,7 +9,6 @@ resources:
 - spawner-basic-role-binding.yaml
 - spawner-environ-config-map.yaml
 - spawner-configs-config-map.yaml
-- session-envvars-config-map.yaml
 - spawner-deployment.yaml
 - spawner-service.yaml
 - spawner-ingress.yaml
