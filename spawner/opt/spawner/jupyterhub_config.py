@@ -1626,7 +1626,6 @@ def create_console_resources(spawner, pod, project_name, owner_uid,
 
         else:
             print('WARNING: Console CSRF secret already exists.')
-            break
 
     except Exception as e:
         print('ERROR: Error creating console CSRF secret. %s' % e)
