@@ -210,7 +210,7 @@ def modify_pod_hook(spawner, pod):
     pod.spec.automount_service_account_token = True
     pod.spec.service_account_name = user_account_name
 
-    pod.metadata.ownerReferences: [
+    pod.metadata.ownerReferences = [
         {
             "apiVersion": "apps/v1",
             "kind": "Deployment",
