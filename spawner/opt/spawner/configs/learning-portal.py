@@ -214,8 +214,8 @@ def modify_pod_hook(spawner, pod):
         {
             "apiVersion": "apps/v1",
             "kind": "Deployment",
-            "blockOwnerDeletion": false,
-            "controller": true,
+            "blockOwnerDeletion": False,
+            "controller": True,
             "name": pod_owner.metadata.name,
             "uid": pod_owner.metadata.uid,
         }
