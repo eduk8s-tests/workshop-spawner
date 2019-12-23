@@ -182,7 +182,8 @@ c.Spawner.environment['RESTART_URL'] = '/restart'
 pod_owner_name = '%s-spawner' % application_name
 
 try:
-    pod_owner = deployment_resource.get(pod_owner_name)
+    pod_owner = deployment_resource.get(namespace=namespace,
+            name=pod_owner_name)
 
 except Exception as e:
     print('ERROR: Cannot get spawner development %s. %s' % (
