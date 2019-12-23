@@ -179,13 +179,14 @@ c.Spawner.environment['RESTART_URL'] = '/restart'
 
 # Intercept creation of pod and used it to trigger our customisations.
 
-project_owner_name = '%s-spawner-extra' % application_name
+project_owner_name = '%s-spawner-basic' % application_name
 
 try:
-    project_owner = cluster_role_resource.get(project_owner_name)
+    project_owner = cluster_role_binding_resource.get(project_owner_name)
 
 except Exception as e:
-    print('ERROR: Cannot get spawner cluster role %s. %s' % (project_owner_name, e))
+    print('ERROR: Cannot get spawner cluster role binding %s. %s' % (
+            roject_owner_name, e))
     raise
 
 @gen.coroutine
