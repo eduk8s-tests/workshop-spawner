@@ -190,7 +190,7 @@ except Exception as e:
             pod_owner_name, e))
     raise
 
-project_owner_name = '%s-spawner-basic' % application_name
+project_owner_name = '%s-spawner-cluster-admin' % application_name
 
 try:
     project_owner = cluster_role_binding_resource.get(name=project_owner_name)
