@@ -459,6 +459,9 @@ if os.environ.get('KUBECTL_VERSION'):
 namespace_resource = api_client.resources.get(
      api_version='v1', kind='Namespace')
 
+deployment_resource = api_client.resources.get(
+     api_version='apps/v1', kind='Deployment')
+
 service_account_resource = api_client.resources.get(
      api_version='v1', kind='ServiceAccount')
 

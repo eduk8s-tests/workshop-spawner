@@ -179,6 +179,16 @@ c.Spawner.environment['RESTART_URL'] = '/restart'
 
 # Intercept creation of pod and used it to trigger our customisations.
 
+pod_owner_name = '%s-spawner' % application_name
+
+try:
+    pod_owner = deployment_resource.get(pod_owner_name)
+
+except Exception as e:
+    print('ERROR: Cannot get spawner development %s. %s' % (
+            pod_owner_name, e))
+    raise
+
 project_owner_name = '%s-spawner-basic' % application_name
 
 try:
@@ -198,6 +208,17 @@ def modify_pod_hook(spawner, pod):
 
     pod.spec.automount_service_account_token = True
     pod.spec.service_account_name = user_account_name
+
+    pod.metadata.ownerReferences: [
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "blockOwnerDeletion": false,
+            "controller": true,
+            "name": pod_owner.metadata.name,
+            "uid": pod_owner.metadata.uid,
+        }
+    ]
 
     # Ensure that a service account exists corresponding to the user.
     # Need to do this as it may have been cleaned up if the session had
