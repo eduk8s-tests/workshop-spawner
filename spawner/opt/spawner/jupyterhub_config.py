@@ -1612,12 +1612,12 @@ def create_console_resources(spawner, pod, project_name, owner_uid,
 
     try:
         text = secret_template.safe_substitute(
-                configuration=configuration_type, namespace=namespace,
-                name='kubernetes-dashboard-csrf',
-                application_name=application_name, username=short_name)
+                name='kubernetes-dashboard-csrf', username=short_name,
+                configuration=configuration_type,
+                application_name=application_name)
         body = json.loads(text)
 
-        secret_resource.create(namespace=namespace, body=body)
+        secret_resource.create(namespace=project_name, body=body)
 
     except ApiException as e:
         if e.status != 409:
