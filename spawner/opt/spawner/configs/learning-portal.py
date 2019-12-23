@@ -186,7 +186,7 @@ try:
 
 except Exception as e:
     print('ERROR: Cannot get spawner cluster role binding %s. %s' % (
-            roject_owner_name, e))
+            project_owner_name, e))
     raise
 
 @gen.coroutine
