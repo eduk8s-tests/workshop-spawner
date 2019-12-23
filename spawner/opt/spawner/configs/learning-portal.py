@@ -193,7 +193,7 @@ except Exception as e:
 project_owner_name = '%s-spawner-basic' % application_name
 
 try:
-    project_owner = cluster_role_binding_resource.get(project_owner_name)
+    project_owner = cluster_role_binding_resource.get(name=project_owner_name)
 
 except Exception as e:
     print('ERROR: Cannot get spawner cluster role binding %s. %s' % (
