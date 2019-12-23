@@ -14,10 +14,10 @@ resources:
 - spawner-service.yaml
 - spawner-ingress.yaml
 - spawner-basic-cluster-role-binding.yaml
-- spawner-extra-cluster-role.yaml
-- spawner-extra-cluster-role-binding.yaml
-- spawner-rules-cluster-role.yaml
-- spawner-rules-cluster-role-binding.yaml
+#- spawner-extra-cluster-role.yaml
+#- spawner-extra-cluster-role-binding.yaml
+#- spawner-rules-cluster-role.yaml
+#- spawner-rules-cluster-role-binding.yaml
 
 configMapGenerator:
 - name: spawner-environ
